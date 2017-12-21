@@ -1,0 +1,13 @@
+---
+layout: none
+---
+{
+  "posts" : [
+    {% for post in site.posts %}{
+    "url" : "{{ post.url }}",
+    "title" : "{{ post.title }}",
+    "postdate" : "{{ post.date | date: '%B %d, %Y' }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
