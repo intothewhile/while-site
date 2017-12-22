@@ -1,8 +1,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <!--<div class="menu-btn action-menu">
+      <div class="menu-icon-wrapper">
+          <div class="menu-icon"><span></span></div>
+          <div class="menu-icon hover-icon"><span></span></div>
+      </div>
+  </div>-->
   <div class="container">
-    <a class="navbar-brand" href="{{"/" | relative_url }}">Into the While</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand action-menu" href="{{"/" | relative_url }}">Into the While</a>
+    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fa fa-bars"></i>
     </button>
@@ -21,6 +27,22 @@
           <a class="nav-link" href="{{"/contact" | relative_url }}">Contact</a>
         </li>
       </ul>
-    </div>
+    </div>-->
   </div>
 </nav>
+<!-- menu -->
+<div class="page-header">
+    <div class="header-bg-layer"></div>
+    <div class="header-container">
+        <div class="main-menu">
+            <ul id="menu-menu" class="menu">
+                <li><a href="{{"/" | relative_url }}">Accueil</a></li>
+                <li><a href="{{"/about" | relative_url }}">About</a></li>
+                <li><a href="{{"/posts" | relative_url }}">Posts</a></li>
+                <li><a href="{{"/contact" | relative_url }}">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="close-btn action-menu"> <span>Close</span></div>
+</div>
+<!-- menu -->
