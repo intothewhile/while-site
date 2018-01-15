@@ -1,5 +1,5 @@
 body {
-  background:#000;
+  background:#280B65;
   overflow-x: hidden;
 }
 
@@ -441,8 +441,8 @@ nav .menu-btn .menu-icon-wrapper .menu-icon span:after {
   overflow-y: auto;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .875rem; /* 15px */
-  color: rgba(255,255,255,.6);
-  background-color: #202020;
+  color: rgba(255,255,255,1);
+  background-color: #D21044;
   -webkit-transition: all .3s ease-in-out;
           transition: all .3s ease-in-out;
 }
@@ -543,6 +543,7 @@ a.sidebar-nav-item:focus {
 @media (min-width: 30.1em) {
   .sidebar-toggle {
     position: fixed;
+    z-index: 1031;
   }
 }
 
