@@ -19,9 +19,10 @@
   }
   > .post-meta {
     font-size: 18px;
-    font-style: italic;
+    /*font-style: italic;*/
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-top: 0;
-    color: $gray-600;
+    color: $white;
     > a {
       text-decoration: none;
       color: $gray-900;
