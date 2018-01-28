@@ -3,9 +3,10 @@ header.masthead {
   // TIP: Background images are set within the HTML using inline CSS!
   margin-bottom: 50px;
   background: no-repeat center center;
-  background-color: $gray-600;
+  background-color: $gray-900;
   background-attachment: scroll;
   position: relative;
+  z-index: 9;
   @include background-cover;
   .overlay {
     position: absolute;

@@ -12,7 +12,9 @@
 
           checkbox.checked = false;
         }, false);
+        
       })(document);
+
 
       $(function () {
   /*var menuaction = document.querySelectorAll('.action-menu');
