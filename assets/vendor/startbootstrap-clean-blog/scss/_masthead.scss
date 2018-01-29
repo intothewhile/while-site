@@ -3,7 +3,8 @@ header.masthead {
   // TIP: Background images are set within the HTML using inline CSS!
   margin-bottom: 50px;
   background: no-repeat center center;
-  background-color: $gray-900;
+  background-color: #000;
+  background-image: linear-gradient(135deg,#fede62 0,#d44489 69%,#d44489 100%);
   background-attachment: scroll;
   position: relative;
   z-index: 9;
