@@ -1,48 +1,40 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <!--<div class="menu-btn action-menu">
-      <div class="menu-icon-wrapper">
-          <div class="menu-icon"><span></span></div>
-          <div class="menu-icon hover-icon"><span></span></div>
-      </div>
-  </div>-->
   <div class="container">
-    <a class="navbar-brand" href="{{"/" | relative_url }}">Into the While</a>
-    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <a class="navbar-brand" href="{{"/" | relative_url }}">Into the while</a>
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
+        {% if site.twitter_username %}
         <li class="nav-item">
-          <a class="nav-link" href="{{"/" | relative_url }}">Home</a>
+          <a href="https://www.twitter.com/{{ site.twitter_username }}">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
         </li>
+        {% endif %}
+        {% if site.facebook_username %}
         <li class="nav-item">
-          <a class="nav-link" href="{{"/about" | relative_url }}">About</a>
+          <a href="https://www.facebook.com/{{ site.facebook_username }}">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
         </li>
+        {% endif %}
+        {% if site.github_username %}
         <li class="nav-item">
-          <a class="nav-link" href="{{"/posts" | relative_url }}">Posts</a>
+          <a href="https://github.com/{{ site.github_username }}">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{"/contact" | relative_url }}">Contact</a>
-        </li>
+        {% endif %}
       </ul>
-    </div>-->
+    </div>
   </div>
 </nav>
-<!-- menu -->
-<!--<div class="page-header">
-    <div class="header-bg-layer"></div>
-    <div class="header-container">
-        <div class="main-menu">
-            <ul id="menu-menu" class="menu">
-                <li><a href="{{"/" | relative_url }}">Accueil</a></li>
-                <li><a href="{{"/about" | relative_url }}">About</a></li>
-                <li><a href="{{"/posts" | relative_url }}">Posts</a></li>
-                <li><a href="{{"/contact" | relative_url }}">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="close-btn action-menu"> <span>Close</span></div>
-</div>-->
-<!-- menu -->
