@@ -30,6 +30,18 @@ header.masthead::before {
   z-index:-1;
 }
 
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 667px) {
+  .bg-heading {
+    transform: translateX(-60%) translateY(-50%) scale(0.5);
+  }
+
+  header.masthead .page-heading .subheading, header.masthead .site-heading .subheading {
+    display: none;
+  }
+}
+
 .bg-heading path {
 	fill: url(#gradient-1);
 }
@@ -209,12 +221,11 @@ a.sidebar-nav-item:focus {
   background-image:         linear-gradient(to bottom, #000, #000 20%, #fff 20%, #fff 40%, #000 40%, #000 60%, #fff 60%, #fff 80%, #000 80%, #000 100%);
 }
 
-@media (min-width: 30.1em) {
   .sidebar-toggle {
     position: fixed;
     z-index: 1031;
   }
-}
+
 
 @media print {
   .sidebar-toggle {
