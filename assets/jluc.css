@@ -24,23 +24,13 @@ header.masthead::before {
   position: absolute;
   top:50%;
   left:50%;
-  width:490px;
+  width:640px;
   height:456px;
   transform: translateX(-50%) translateY(-50%);
   z-index:-1;
 }
 
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 667px) {
-  .bg-heading {
-    transform: translateX(-60%) translateY(-50%) scale(0.5);
-  }
 
-  header.masthead .page-heading .subheading, header.masthead .site-heading .subheading {
-    display: none;
-  }
-}
 
 .bg-heading path {
 	fill: url(#gradient-1);
@@ -177,7 +167,7 @@ a.sidebar-nav-item:focus {
   background-color: rgba(255,255,255,.1);
 }
 
-@media (min-width: 48em) {
+/*@media (min-width: 48em) {*/
   .sidebar-item {
     padding: 1.5rem;
   }
@@ -185,7 +175,7 @@ a.sidebar-nav-item:focus {
     padding-left:  1.5rem;
     padding-right: 1.5rem;
   }
-}
+/*}*/
 
 /* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
 .sidebar-checkbox {
@@ -269,4 +259,30 @@ a.sidebar-nav-item:focus {
   -webkit-transform: translateX(28rem);
       -ms-transform: translateX(28rem);
           transform: translateX(28rem);
+}
+
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 667px) {
+  .bg-heading {
+    transform: translateX(-60%) translateY(-50%) scale(0.5);
+  }
+
+  header.masthead .page-heading .subheading, header.masthead .site-heading .subheading {
+    display: none;
+  }
+
+  .sidebar {
+    left: -18rem;
+    width: 18rem;
+  }
+
+  #sidebar-checkbox:checked ~ .sidebar,
+  #sidebar-checkbox:checked ~ .wrap,
+  #sidebar-checkbox:checked ~ .sidebar-toggle {
+    -webkit-transform: translateX(18rem);
+        -ms-transform: translateX(18rem);
+            transform: translateX(18rem);
+  }
 }
