@@ -5,7 +5,9 @@
 {% endif %}
 
 {% if page.layout contains 'music' %}
+<script src="{{"/assets/vendor/jquery/jquery.min.js" | relative_url }}"></script>
 <script src="{{"/assets/flickity.pkgd.min.js" | relative_url }}"></script>
+<script src="{{"/assets/vendor/kaleidoscope/kaleidoscope.js" | relative_url }}"></script>
 <script>
     (function(document) {
 
@@ -36,10 +38,15 @@ function moveParallaxLayer( layer, layerRatio, progress ) {
 
           })(document);
     </script>
+{% else %}
+<script src="{{"/assets/parallax.js" | relative_url }}"></script>
+<script>
+    var scene = document.getElementById('scene');
+      var parallax = new Parallax(scene);
+  </script>
 {% endif %}
 
 <script src="{{"/assets/scripts.js" | relative_url }}"></script>
-<script src="{{"/assets/parallax.js" | relative_url }}"></script>
 <script src="{{"/assets/aos.js" | relative_url }}"></script>
 
 <script>
@@ -49,9 +56,7 @@ function moveParallaxLayer( layer, layerRatio, progress ) {
       easing: 'ease-in-sine',
       delay: 100,
     });
-    var scene = document.getElementById('scene');
-      var parallax = new Parallax(scene);
-  </script>
+</script>
 
 {% if page.url contains 'contact' %}
   <script src="{{"/assets/vendor/jquery/jquery.min.js" | relative_url }}"></script>

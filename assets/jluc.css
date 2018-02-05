@@ -321,7 +321,7 @@ a.sidebar-nav-item:focus {
   width: 50%;
   margin: 0 5%;
   height: 100%;
-	background: #cc0000;
+	/*background: #cc0000;*/
 }
 
 .parallax__layer--bg .parallax__layer__cell {
@@ -329,7 +329,7 @@ a.sidebar-nav-item:focus {
 	margin:0;
 	/*background: url(../images/cote.jpg) no-repeat 50%;
 	background-size: cover;*/
-	background: #00CCCC;
+	background: #000;
 }
 
 .parallax__layer__cell:nth-child(1) { left: 0%; }
@@ -363,8 +363,8 @@ a.sidebar-nav-item:focus {
   height: 70vh;
   width: 50%;
   margin: 40px 10%; /* total width = 50% + 5% + 5% = 60% */
-  background: #8C8;
-	opacity: 0.7;
+  /*background: #8C8;*/
+	opacity: 0.9;
 	position: relative;
   /*counter-increment: carousel-cell;*/
 }
@@ -373,6 +373,9 @@ a.sidebar-nav-item:focus {
 	position: absolute;
 	top:50%;
 	left:50%;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 2rem;
 	transform: translateY(-50%) translateX(-50%);
 }
 
