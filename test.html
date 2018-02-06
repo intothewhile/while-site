@@ -6,21 +6,12 @@ description: This is what I do.
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="description" content="HTML5 Audio Spectrum Visualizer">
-        <title>HTML5 Audio Spectrum Visualizer - Alexandre Juca</title>
-        <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+        <title>test audio</title>
         <style>
         html, body {
             margin: 0;
-            font-family: 'Oswald', sans-serif;
-            background-color: #272822;
+            background-color: #000;
             color: #FEFEFE;
-        }
-        #fileWrapper{
-        	transition:all 0.5s ease;
-        }
-        #fileWrapper:hover{
-        	opacity: 1!important;
         }
 
         #visualizer_wrapper{
@@ -64,15 +55,6 @@ description: This is what I do.
     </head>
     <body>
         <div id="wrapper">
-            <div id="fileWrapper" class="file_wrapper">
-                <div id="info">
-                    HTML5 Audio Spectrum Visualizer
-                   Inpsired by WINAMP
-                </div>
-
-                <label for="uploadedFile">Drag & drop or select a file to play:</label>
-                <input type="file" id="uploadedFile"></input>
-            </div>
             <div id="visualizer_wrapper">
 
                  <canvas id='mono-L' width="1200" height="350"></canvas>
@@ -87,7 +69,6 @@ description: This is what I do.
             this.fileName = null, //the current file name
             this.audioContext = null,
             this.source = null, //the audio source
-            this.info = document.getElementById('info').innerHTML, //this used to upgrade the UI information
             this.infoUpdateId = null, //to sotore the setTimeout ID and clear the interval
             this.animationId = null,
             this.status = 0, //flag for sound is playing 1 or stopped 0
@@ -99,7 +80,6 @@ description: This is what I do.
         Visualizer.prototype = {
             ini: function() {
                 this._prepareAPI();
-                //this._addEventListner();
                 this._start();
             },
             _prepareAPI: function() {
@@ -110,32 +90,8 @@ description: This is what I do.
                 try {
                     this.audioContext = new AudioContext();
                 } catch (e) {
-                    this._updateInfo('!Your browser does not support AudioContext', false);
                     console.log(e);
                 }
-            },
-            _addEventListner: function() {
-                var that = this,
-                    audioInput = document.getElementById('uploadedFile'),
-                    dropContainer = document.getElementsByTagName("canvas")[0];
-                //listen the file upload
-                audioInput.onchange = function() {
-                    //the if statement fixes the file selction cance,l because the onchange will trigger even the file selection been canceled
-                    if (audioInput.files.length !== 0) {
-                        //only process the first file
-                        that.file = audioInput.files[0];
-                        that.fileName = that.file.name;
-                        if (that.status === 1) {
-                            //the sound is still playing but we upload another file, so set the forceStop flag to true
-                            that.forceStop = true;
-                        };
-                        document.getElementById('fileWrapper').style.opacity = 1;
-                        that._updateInfo('Uploading', true);
-                        //once the file is ready,start the visualizer
-                        that._start();
-                    };
-                };
-
             },
             _start: function() {
                 //read and decode the file into audio array buffer
@@ -149,25 +105,15 @@ description: This is what I do.
                     if (audioContext === null) {
                         return;
                     };
-                    that._updateInfo('Decoding the audio', true);
                     audioContext.decodeAudioData(fileResult, function(buffer) {
-                        that._updateInfo('Decode succussfully,start the visualizer', true);
                         that._visualize(audioContext, buffer);
                     }, function(e) {
-                        that._updateInfo('!Fail to decode the file', false);
-                        console.log(e);
+                        //that._updateInfo('!Fail to decode the file', false);
+                        //console.log(e);
                     });
                 };
-                fr.onerror = function(e) {
-                    that._updateInfo('!Fail to read the file', false);
-                    console.log(e);
-                };
-                //assign the file to the reader
-                this._updateInfo('Starting read the file', true);
-                //fr.readAsArrayBuffer(file);
+
                 fetch(file).then(resp => resp.blob()).then(blob => fr.readAsArrayBuffer(blob));
-                /*var audio = new Audio('test.mp3');
-                audio.play();*/
             },
             _visualize: function(audioContext, buffer) {
                 var audioBufferSouceNode = audioContext.createBufferSource(),
@@ -197,9 +143,6 @@ description: This is what I do.
                 audioBufferSouceNode.onended = function() {
                     that._audioEnd(that);
                 };
-                this._updateInfo('Playing ' + this.fileName, false);
-                this.info = 'Playing ' + this.fileName;
-                document.getElementById('fileWrapper').style.opacity = 0.2;
                 this._drawSpectrum(analyser);
             },
             _drawSpectrum: function(analyser) {
@@ -259,32 +202,6 @@ description: This is what I do.
                     return;
                 };
                 this.status = 0;
-                var text = 'HTML5 Audio Spectrum Visualizer - Alexandre Juca';
-                document.getElementById('fileWrapper').style.opacity = 1;
-                document.getElementById('info').innerHTML = text;
-                instance.info = text;
-                document.getElementById('uploadedFile').value = '';
-            },
-            _updateInfo: function(text, processing) {
-                var infoBar = document.getElementById('info'),
-                    dots = '...',
-                    i = 0,
-                    that = this;
-                infoBar.innerHTML = text + dots.substring(0, i++);
-                if (this.infoUpdateId !== null) {
-                    clearTimeout(this.infoUpdateId);
-                };
-                if (processing) {
-                    //animate dots at the end of the info text
-                    var animateDot = function() {
-                        if (i > 3) {
-                            i = 0
-                        };
-                        infoBar.innerHTML = text + dots.substring(0, i++);
-                        that.infoUpdateId = setTimeout(animateDot, 250);
-                    }
-                    this.infoUpdateId = setTimeout(animateDot, 250);
-                };
             }
         }
 
