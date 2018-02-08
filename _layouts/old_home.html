@@ -34,38 +34,28 @@ layout: default
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto post-list">
+      <div class="col-lg-8 col-md-10 mx-auto">
 
-        {% for post in paginator.posts %}
+        {{ content }}
+
+        <!-- Home Post List -->
+        {% for post in site.posts limit : 5 %}
 
           <article class="post-preview" data-aos="fade-up">
             <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
               <h2 class="post-title">{{ post.title }}</h2>
             </a>
-            <p class="post-meta">on {{ post.date | date: '%B %d, %Y' }}</p>
+            <p class="post-meta">
+              {{ post.date | date: '%B %d, %Y' }}</p>
           </article>
 
 
         {% endfor %}
 
         <!-- Pager -->
-        {% if paginator.total_pages > 1 %}
-
-          <div class="clearfix">
-
-            {% if paginator.previous_page %}
-              <a class="btn btn-primary float-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older<span class="d-none d-md-inline"> Posts</span></a>
-            {% endif %}
-
-            {% if paginator.next_page %}
-              <a class="btn btn-primary float-right" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer<span class="d-none d-md-inline"> Posts</span> &rarr;</a>
-            {% endif %}
-
-          </div>
-
-        {% endif %}
-        <div class="infinite-spinner"></div>
-
+        <div class="clearfix" data-aos="fade-up">
+          <a class="btn btn-primary float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
+        </div>
 
       </div>
     </div>
