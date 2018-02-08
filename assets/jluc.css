@@ -20,6 +20,12 @@ header.masthead::before {
   opacity: 0.1;
 }
 
+/*header h1 {
+  background: linear-gradient(to right, #2899C3, #51C258);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}*/
+
 .bg-heading {
   position: absolute;
   top:50%;
