@@ -17,7 +17,7 @@ header.masthead::before {
   right:0;
   bottom:0;
   background: url(../img/noise.gif);
-  opacity: 0.10;
+  opacity: 0.1;
 }
 
 .bg-heading {
@@ -26,7 +26,7 @@ header.masthead::before {
   left:50%;
   width:640px;
   height:456px;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%) scale(2.6);
   z-index:-1;
 }
 

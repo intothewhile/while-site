@@ -4,10 +4,13 @@ header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
   background-color: #000;
-  background-image: linear-gradient(135deg,#fede62 0,#d44489 69%,#d44489 100%);
+  //background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  //background-image: linear-gradient(135deg,#fede62 0,#d44489 69%,#d44489 100%);
+  //background-image: linear-gradient(135deg,#301E36 0,#1E2834 69%,#182C33 100%);
   background-attachment: scroll;
   position: relative;
   z-index: 9;
+  overflow: hidden;
   @include background-cover;
   .overlay {
     position: absolute;
@@ -40,6 +43,7 @@ header.masthead {
       line-height: 1.1;
       display: block;
       margin: 10px 0 0;
+      padding: 0 10%;
       @include sans-serif-font;
     }
     @media only screen and (min-width: 768px) {
