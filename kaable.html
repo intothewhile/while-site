@@ -93,7 +93,6 @@
       font-size: 10rem;
       text-transform: uppercase;
       font-weight: 900;
-      opacity: 0.8;
       /*text-shadow: 3px 3px 3px #333;*/
     }
 
@@ -193,8 +192,8 @@
         height = window.innerHeight,
         maxHeight = Math.max(height * 0.3, 300),
         fftSize = 512, // 512
-        tilt = 40,
-        choke = 110,
+        tilt = 0, //40
+        choke = 110, //110
         c = 0;
 
 
@@ -239,20 +238,24 @@
             freqRatio * 80 + "%" +
           ")";
 
+          color = "hsl(100, 100%, 100%)";
+
       var loc_x = x - strokeWidth / 2,
           loc_y1 = y - throttledY / 2,
           loc_y2 = y + throttledY / 2,
           x_offset = tilt * throttledRatio;
 
       if (throttledRatio > 0) {
-        var point_1 = (loc_x - x_offset) + "," + loc_y1,
-            point_2 = (loc_x + x_offset) + "," + loc_y2;
+
+            var point_1 = (loc_x - x_offset) + "," + loc_y1,
+                point_2 = (loc_x + x_offset) + "," + loc_y2;
         var points = [ point_1, point_2 ];
       } else {
         var points = [loc_x + "," + (y-1),loc_x + "," + (y+1)]
       }
 
-      polyline.setAttribute("stroke-width", strokeWidth);
+      //polyline.setAttribute("stroke-width", strokeWidth);
+      polyline.setAttribute("stroke-width", "2px");
       polyline.setAttribute("stroke", color);
       polyline.setAttribute("points", points.join(" "));
       g.appendChild(polyline);
