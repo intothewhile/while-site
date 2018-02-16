@@ -181,8 +181,7 @@
     var audio,
         analyser,
         audioContext,
-        sourceNode,
-        stream;
+        sourceNode;
 
     var svg = document.getElementById('svg'),
         svgNS = svg.namespaceURI,
@@ -192,9 +191,7 @@
         height = window.innerHeight,
         maxHeight = Math.max(height * 0.3, 300),
         fftSize = 512, // 512
-        tilt = 0, //40
-        choke = 110, //110
-        c = 0;
+        choke = 110; //110
 
 
         audio = new Audio();
@@ -220,9 +217,9 @@
       });
     }
 
-    function shape(g, freqValue, freqSequence, freqCount, colorSequence) {
+    function shape(g, freqValue, freqSequence, freqCount) {
       var freqRatio = freqSequence/freqCount,
-          x = (width - (tilt * 2)) * freqRatio + tilt,
+          x = width * freqRatio,
           y = height / 2;
 
       var polyline = document.createElementNS(svgNS, "polyline"),
@@ -230,33 +227,22 @@
           freqRatio = freqValue / 255,
           throttledRatio = (freqValue - choke) / (255 - choke),
           strokeWidth = width / freqCount * 0.6 * throttledRatio,
-          throttledY = Math.max(throttledRatio, 0) * maxHeight,
-          // color
-          color = "hsl(" +
-            ((freqSequence / 2) + Math.floor(colorSequence)) + ", " +
-            100 + "%," +
-            freqRatio * 80 + "%" +
-          ")";
-
-          color = "hsl(100, 100%, 100%)";
+          throttledY = Math.max(throttledRatio, 0) * maxHeight;
 
       var loc_x = x - strokeWidth / 2,
           loc_y1 = y - throttledY / 2,
-          loc_y2 = y + throttledY / 2,
-          x_offset = tilt * throttledRatio;
+          loc_y2 = y + throttledY / 2;
 
       if (throttledRatio > 0) {
-
-            var point_1 = (loc_x - x_offset) + "," + loc_y1,
-                point_2 = (loc_x + x_offset) + "," + loc_y2;
+            var point_1 = loc_x + "," + loc_y1,
+                point_2 = loc_x + "," + loc_y2;
         var points = [ point_1, point_2 ];
       } else {
         var points = [loc_x + "," + (y-1),loc_x + "," + (y+1)]
       }
 
-      //polyline.setAttribute("stroke-width", strokeWidth);
       polyline.setAttribute("stroke-width", "2px");
-      polyline.setAttribute("stroke", color);
+      polyline.setAttribute("stroke", "hsl(100, 100%, 100%)");
       polyline.setAttribute("points", points.join(" "));
       g.appendChild(polyline);
     }
@@ -274,11 +260,10 @@
 
       for (var i = 0; i < freqArray.length; i++) {
         var v = freqArray[i];
-        shape(g, v, i+1, freqArray.length, c);
+        shape(g, v, i+1, freqArray.length);
       }
       svg.appendChild(g);
 
-      c += 0.5;
       requestAnimationFrame(update);
     }
   };
