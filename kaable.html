@@ -58,25 +58,7 @@ description: This is what I do.
       left: 0;
       bottom: 0;
       right: 0;
-      /*background: #000 url(./img/kaable.jpg) no-repeat 50%;
-      background-size: cover;*/
-      /*-webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);*/
     }
-
-    /*#bck::after {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: url(./img/noise.gif);
-      opacity: 0.18;
-    }*/
 
     #intro {
       position: absolute;
@@ -85,10 +67,6 @@ description: This is what I do.
       text-align: center;
       transform: translateX(-50%) translateY(-50%);
     }
-
-    /*.loading #intro {
-      display: none;
-    }*/
 
     h1 {
       position: absolute;
@@ -103,17 +81,6 @@ description: This is what I do.
       filter: blur(0px);
       transition: 0.4s filter linear;
     }
-
-
-
-    /*.blur #intro {
-      filter: blur(30px);
-      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
-    }*/
-
-
-
-
 
     #loader {
       position: absolute;
@@ -453,6 +420,10 @@ window.onload = function() {
         fftSize = 512, // 512
         choke = 110; //110
 
+        if (width < 650) {
+          fftSize = 128;
+        }
+
 
         audio = new Audio();
         audio.src = "/assets/kaable.mp3";
@@ -531,7 +502,6 @@ window.onload = function() {
           y = height / 2;
 
       var polyline = document.createElementNS(svgNS, "polyline"),
-          // using power to increase highs and decrease lows
           freqRatio = freqValue / 255,
           throttledRatio = (freqValue - choke) / (255 - choke),
           strokeWidth = width / freqCount * 0.6 * throttledRatio,
@@ -550,7 +520,6 @@ window.onload = function() {
       }
 
       polyline.setAttribute("stroke-width", "2px");
-      //polyline.setAttribute("stroke", "hsl(100, 100%, 100%)");
       polyline.setAttribute("points", points.join(" "));
       g.appendChild(polyline);
     }
